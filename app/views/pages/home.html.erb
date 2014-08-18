@@ -1,7 +1,14 @@
 <html>
 <div class="jumbotron">
 <h1>This is BrainFeeder</h1><br>
-<p class="pull-left">Teachers sign up <%= link_to "here", "#", class: "btn btn-primary" %></p>
-<p class="pull-right">Students sign up <%= link_to "here", "#", class: "btn btn-primary" %></p>
+<% if user_signed_in? %>
+Start feeding your brain with RSS
+
+<% else %>
+	<p class="pull-left">Teachers sign up <%= link_to "here", new_user_registration_path, class: "btn btn-primary" %></p>
+	<p class="pull-right">Students sign up <%= link_to "here", new_user_registration_path, class: "btn btn-primary" %></p><br><br><br><br>
+	<p class="pull-right">Have a student account? <%= link_to "Log in", new_user_session_path %></p>
+	<p class="pull-left">Have a teacher account? <%= link_to "Log in", new_user_session_path %></p>
+<% end %>
 </div>
 </html>
